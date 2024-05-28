@@ -1,1 +1,1 @@
-Fiteness APP with Django
+Fitness APP with Django
