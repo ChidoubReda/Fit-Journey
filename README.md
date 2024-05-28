@@ -1,2 +1,3 @@
 # Fit-Journey
-Fitness app developped with Django
+Fitness app developed with Django
+Check the master branch
