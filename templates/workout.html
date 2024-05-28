@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}
+Workouts
+{% endblock title %}
+{% block head %}
+<h1>Wokouts API</h1>
+
+<body>
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <form method="POST">
+                    {%csrf_token%}
+                    <div class="input-group input-group-lg mb-5">
+                        <input style="width: 200px;" type="text" name="muscle" class="form-control inputstyle"
+                            placeholder="search for muscle " required>
+                        <button class="btn whoop" type="submit" id="button-addon2" style="color: white;">Find muscle</button>
+                    </div>
+                </form>
+                {% if api %}
+                {% if api == "oops! There was an error" %}
+                <div class ="alert alert-warning"> Oh no! something went wrong.Please try again in sometime. </div>
+                {%else%}
+                <h1>Workout exercises for <span style="color: #ffcd6b;">{{api.0.muscle | capfirst}}</span></h1>
+        </div>
+        <div style="color: white;" class="row justify-content-center mt-5 mb-5">
+            <div class="col-md-auto display: grid; caloriescont shadow rounded">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <ul>
+                            <li style="margin-bottom: 20px;">Name: <span>{{api.0.name}}</span></li>
+                            <li style="display: grid; margin-bottom: 20px;">Difficulty: <span>{{api.0.difficulty}}</span></li>
+                            <li style="display: grid; margin-bottom: 40px;">Equipment: <span>{{api.0.equipment}}</span></li>
+                            <li style="margin-bottom: 20px;">Name: <span>{{api.1.name}}</span></li>
+                            <li style="display: grid; margin-bottom: 20px;">Difficulty: <span>{{api.1.difficulty}}</span></li>
+                            <li style="display: grid; margin-bottom: 40px;">Equipment: <span>{{api.1.equipment}}</span></li>
+                            <li style="margin-bottom: 20px;">Name: <span>{{api.2.name}}</span></li>
+                            <li style="display: grid; margin-bottom: 20px;">Difficulty: <span>{{api.2.difficulty}}</span></li>
+                            <li style="display: grid; margin-bottom: 20px;">Equipment: <span>{{api.2.equipment}}</span></li>
+                    </div>
+                    
+                    <div>
+                      <canvas id="myChart" width="400" height="400"></canvas>
+                      </div>
+                </div>
+            </div>
+            {%endif%}
+            {%endif%}
+        </div>
+</body>
+
+{% endblock head %}

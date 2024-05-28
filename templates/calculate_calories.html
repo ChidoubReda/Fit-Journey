@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}
+Calculate Calories
+{% endblock title %}
+{% block head %}
+
+  <h1>Calculate your Calories</h1>
+
+  <div class="container mt-2">
+
+      <div class="row">
+          
+      <div class="col-md-3"> </div>
+          
+      <div class="col-md-6">
+          
+          
+            {% if calories %}
+            <div class="alert alert-warning d-flex align-items-center" role="alert">
+              <div>
+                <p>Calories Burned in session: {{ calories }} calories</p>
+              </div>
+            </div>
+              
+            {% else %}
+              <form method="post" action="/calculate_calories">
+                  {% csrf_token %}
+                  <div class="form-group">
+                  <input type="number" class="form-control mt-2" name="age" placeholder="Enter Your Age (years)" required>
+                  </div>
+                  <div class="form-group">
+                  <input type="number" class="form-control mt-2" name="weight" placeholder="Enter Your weight (Kg)" required>
+                  </div>
+                  <div class="form-group">
+                  <input type="number" class="form-control mt-2" name="heart_rate" placeholder="Enter Your heart_rate (bpm)" required>
+                  </div>                  
+                  <div class="form-group">
+                  <input type="number" class="form-control mt-2" name="time" placeholder="Enter the time (minutes)" required>
+                  </div>                  
+                  <<div class="d-grid gap-2">
+                    <button class="btn btn-warning" type="submit">Calculate</button>
+                  
+                  </div>
+              </form>
+            {% endif %}    
+          
+          
+          
+      </div>
+          
+      <div class="col-md-3"></div>
+          
+      </div>
+          
+          
+          
+      </div>
+      
+
+
+  {% endblock head %}
